@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/bin
+/obj 
+/Com.Moonlay.Service.Project.WebApi/bin
+/Com.Moonlay.Service.Project.WebApi/obj
+/Com.Moonlay.Service.Project.WebApi.Test/bin
+/Com.Moonlay.Service.Project.WebApi.Test/obj

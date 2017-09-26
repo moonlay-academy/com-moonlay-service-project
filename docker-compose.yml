@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  com.moonlay.service.project.webapi:
+    image: com.moonlay.service.project.webapi
+    build:
+      context: ./Com.Moonlay.Service.Project.WebApi
+      dockerfile: Dockerfile
