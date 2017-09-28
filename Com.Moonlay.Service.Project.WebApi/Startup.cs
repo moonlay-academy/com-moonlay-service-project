@@ -37,6 +37,15 @@ namespace Com.Moonlay.Service.Project.WebApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            string authority = Configuration.GetValue<string>("Authority");
+
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = authority,
+                RequireHttpsMetadata = false,
+                ApiName = "com.moonlay.service.project"                
+            });
+
             app.UseMvc();
         }
     }
