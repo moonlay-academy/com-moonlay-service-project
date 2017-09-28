@@ -24,7 +24,7 @@ namespace Com.Moonlay.Service.Project.WebApi.Test
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = client.GetAsync("http://localhost:5001/api/values").Result;
+            var response = client.GetAsync("http://127.0.0.1:5001/api/values").Result;
             Assert.True(response.IsSuccessStatusCode);
             //if (!response.IsSuccessStatusCode)
             //{
