@@ -1,5 +1,6 @@
 using IdentityModel.Client;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace Com.Moonlay.Service.Project.WebApi.Test
     {
         [Fact]
         public void Test1()
-        { 
+        {
             var disco = DiscoveryClient.GetAsync("http://127.0.0.1:5000").Result;
             var tokenClient = new TokenClient(disco.TokenEndpoint, "unit.test", "test");
             var tokenResponse = tokenClient.RequestClientCredentialsAsync("service.project.read").Result;
@@ -25,7 +26,7 @@ namespace Com.Moonlay.Service.Project.WebApi.Test
             client.SetBearerToken(tokenResponse.AccessToken);
 
             var response = client.GetAsync("http://127.0.0.1:5001/api/values").Result;
-            Assert.True(response.IsSuccessStatusCode);
+            Assert.True(response.IsSuccessStatusCode, string.Join("/", new List<string> { response.StatusCode.ToString(), response.ReasonPhrase }));
             //if (!response.IsSuccessStatusCode)
             //{
             //    Ass
