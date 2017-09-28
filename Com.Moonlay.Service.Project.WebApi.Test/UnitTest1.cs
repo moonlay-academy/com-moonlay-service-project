@@ -9,13 +9,13 @@ namespace Com.Moonlay.Service.Project.WebApi.Test
     {
         [Fact]
         public void Test1()
-        {
-            var disco = DiscoveryClient.GetAsync("http://localhost:5000").Result;
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "client", "secret");
-            var tokenResponse = tokenClient.RequestClientCredentialsAsync("api1").Result;
+        { 
+            var disco = DiscoveryClient.GetAsync("http://127.0.0.1:5000").Result;
+            var tokenClient = new TokenClient(disco.TokenEndpoint, "unit.test", "test");
+            var tokenResponse = tokenClient.RequestClientCredentialsAsync("service.project.read").Result;
 
             //if (tokenResponse.IsError)
-                Assert.False(tokenResponse.IsError);
+            Assert.False(tokenResponse.IsError);
             //{
             //    Console.WriteLine(tokenResponse.Error);
             //    return;
