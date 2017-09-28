@@ -6,7 +6,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Test
       - DefaultConnection=Server=mssql;Database=com.moonlay.db.project;User=sa;password=Standar123;MultipleActiveResultSets=true
-      - Authority=http://auth-provider
+      - Authority=http://127.0.0.1:5000
     build:
       context: .
       dockerfile: Dockerfile
