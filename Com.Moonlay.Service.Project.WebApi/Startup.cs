@@ -43,7 +43,8 @@ namespace Com.Moonlay.Service.Project.WebApi
             {
                 Authority = authority,
                 RequireHttpsMetadata = false,
-                ApiName = "com.moonlay.service.project"                
+                ApiName = "com.moonlay.service.project",
+                AllowedScopes = { "service.project.read", "service.project.write" }
             });
 
             app.UseMvc();
