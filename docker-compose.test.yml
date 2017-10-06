@@ -6,7 +6,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Test
       - DefaultConnection=Server=mssql,1433;Database=com.moonlay.db.project;User=sa;password=Standar123;MultipleActiveResultSets=true 
-      - Authority=http://appservice-container-moonlay-auth.azurewebsites.net
+      - Authority=https://auth.moonlay.com
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
       - mssql
 
   mssql:
-    image: microsoft/mssql-server-linux
+    image: microsoft/mssql-server-linux:2017-latest
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=Standar123
