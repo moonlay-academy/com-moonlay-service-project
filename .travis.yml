@@ -27,6 +27,10 @@ script:
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker tag com-moonlay-service-project-webapi:test moonlay/com-moonlay-service-project-webapi:$TRAVIS_BUILD_NUMBER;
-      docker push moonlay/com-moonlay-service-project-webapi:$TRAVIS_BUILD_NUMBER;
+      
+      docker tag com-moonlay-service-project-webapi:test moonlay/com-moonlay-service-project-webapi:v1.0.0.$TRAVIS_BUILD_NUMBER;
+      docker push moonlay/com-moonlay-service-project-webapi:v1.0.0.$TRAVIS_BUILD_NUMBER;
+
+      docker tag com-moonlay-service-project-webapi:test moonlay/com-moonlay-service-project-webapi:v1.0.0.latest;
+      docker push moonlay/com-moonlay-service-project-webapi:v1.0.0.latest;
       fi    
