@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Moonlay.Service.Project.WebApi.Test", "Com.Moonlay.Service.Project.WebApi.Test\Com.Moonlay.Service.Project.WebApi.Test.csproj", "{50FCAD86-7135-4A8C-A559-B64AABC25DD0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sh", "sh", "{9CE4C986-18AC-488E-A019-83C7EF1AD9C3}"
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile.test.build.sh = Dockerfile.test.build.sh
@@ -30,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bat", "bat", "{8334AA01-14C
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile.test.build.bat = Dockerfile.test.build.bat
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Moonlay.Service.Project.Lib", "..\Com.Moonlay.Service.Project.Lib\Com.Moonlay.Service.Project.Lib.csproj", "{E4B6F7ED-63D3-4E21-BCA6-97053D0836EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Moonlay.Service.Project.Test", "Com.Moonlay.Service.Project.Test\Com.Moonlay.Service.Project.Test.csproj", "{E44E54DA-CA67-40B7-A496-A8249C8123BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +47,14 @@ Global
 		{1EBA12ED-E28C-4756-B8E0-EC1F8BD4014D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EBA12ED-E28C-4756-B8E0-EC1F8BD4014D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EBA12ED-E28C-4756-B8E0-EC1F8BD4014D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50FCAD86-7135-4A8C-A559-B64AABC25DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50FCAD86-7135-4A8C-A559-B64AABC25DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50FCAD86-7135-4A8C-A559-B64AABC25DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50FCAD86-7135-4A8C-A559-B64AABC25DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B6F7ED-63D3-4E21-BCA6-97053D0836EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B6F7ED-63D3-4E21-BCA6-97053D0836EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B6F7ED-63D3-4E21-BCA6-97053D0836EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B6F7ED-63D3-4E21-BCA6-97053D0836EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44E54DA-CA67-40B7-A496-A8249C8123BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44E54DA-CA67-40B7-A496-A8249C8123BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44E54DA-CA67-40B7-A496-A8249C8123BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44E54DA-CA67-40B7-A496-A8249C8123BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

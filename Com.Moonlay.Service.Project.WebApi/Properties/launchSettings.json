@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:12467/",
+      "applicationUrl": "http://localhost:5001/",
       "sslPort": 0
     }
   },
@@ -13,6 +13,7 @@
       "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
+        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=com.moonlay.db.project;Trusted_Connection=True;",
         "Authority": "https://auth.moonlay.com/",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
