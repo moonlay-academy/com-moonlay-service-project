@@ -1,7 +1,7 @@
 version: '3'
  
 services:
-  moonlay-service-project-webapi-test:
+  moonlay-service-project-webapi:
     image: com-moonlay-service-project-webapi:test
     environment:
       - ASPNETCORE_ENVIRONMENT=Test

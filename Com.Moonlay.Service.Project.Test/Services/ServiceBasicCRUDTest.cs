@@ -13,19 +13,21 @@ using Xunit;
 
 namespace Com.Moonlay.Service.Project.Test.Services
 {
+    [Collection("ServiceProviderFixture collection")]
     public abstract class ServiceBasicCRUDTest<TService, TModel> : IDisposable
         where TService : StandardEntityService<TModel>
         where TModel : StandardEntity, new()
     {
         IServiceProvider serviceProvider;
-        public ServiceBasicCRUDTest()
+        public ServiceBasicCRUDTest(ServiceProviderFixture fixture)
         {
-            var connectionString = @"Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True";
-            this.serviceProvider = new ServiceCollection()
-                .AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString))
-                .AddSingleton<TService>()
-                .AddSingleton<HelperService>()
-                .BuildServiceProvider();
+            //var connectionString = @"Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True";
+            //this.serviceProvider = new ServiceCollection()
+            //    .AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString))
+            //    .AddSingleton<TService>()
+            //    .AddSingleton<HelperService>()
+            //    .BuildServiceProvider();
+            this.serviceProvider = fixture.ServiceProvider;
         }
         protected TService Service
         {
@@ -130,8 +132,13 @@ namespace Com.Moonlay.Service.Project.Test.Services
             var affectedResult = await service.DeleteAsync(data.Id);
             Assert.True(affectedResult == 1);
 
-            data = await service.Set.FindAsync(id);
+            data = await service.Set.FirstOrDefaultAsync(m => m.Id == id);
             Assert.Null(data);
+
+            data = await service.Set.FindAsync(id);
+            Assert.NotNull(data);
+            Assert.True(data._IsDeleted);
+
         }
 
 

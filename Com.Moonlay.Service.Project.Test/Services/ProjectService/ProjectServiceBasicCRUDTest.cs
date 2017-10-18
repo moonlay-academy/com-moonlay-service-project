@@ -12,8 +12,13 @@ using Xunit;
 
 namespace Com.Moonlay.Service.Project.Test.Services.ProjectService
 {
+    [Collection("ServiceProviderFixture collection")]
     public class ProjectServiceBasicCRUDTest : ServiceBasicCRUDTest<Lib.Services.ProjectService, Lib.Models.Project>
     {
+        public ProjectServiceBasicCRUDTest(ServiceProviderFixture fixture) : base(fixture)
+        {
+        }
+
         public override Lib.Models.Project GenerateTestModel()
         {
             var guid = Guid.NewGuid().ToString();

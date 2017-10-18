@@ -12,8 +12,12 @@ using Xunit;
 
 namespace Com.Moonlay.Service.Project.Test.Services.BacklogService
 {
+    [Collection("ServiceProviderFixture collection")]
     public class BacklogServiceBasicCRUDTest : ServiceBasicCRUDTest<Lib.Services.BacklogService, Lib.Models.Backlog>
     {
+        public BacklogServiceBasicCRUDTest(ServiceProviderFixture fixture) : base(fixture)
+        {
+        }
 
         public override Lib.Models.Backlog GenerateTestModel()
         {
