@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Com.Moonlay.Service.Project.Test
 {
@@ -13,6 +14,9 @@ namespace Com.Moonlay.Service.Project.Test
         public HelperService(ProjectDbContext dbContext)
         {
             this.DbContext = dbContext;
+            bool created = DbContext.Database.EnsureCreated();
+            if (!created)
+                throw new Exception("failed to create database");
             this.ProjectService = new ProjectService(dbContext);
             this.BacklogService = new BacklogService(dbContext);
         }
