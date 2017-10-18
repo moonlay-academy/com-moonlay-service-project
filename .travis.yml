@@ -20,9 +20,9 @@ before_script:
     - sleep 60
     #- docker run -p 127.0.0.1:5000:80 --env ASPNETCORE_ENVIRONMENT=Test moonlay/com-moonlay-service-project-webapi:$TRAVIS_BUILD_NUMBER
 script:
-    - dotnet restore Com.Moonlay.Service.Project.WebApi.Test/Com.Moonlay.Service.Project.Test.csproj
-    - dotnet build Com.Moonlay.Service.Project.WebApi.Test/Com.Moonlay.Service.Project.Test.csproj
-    - dotnet test Com.Moonlay.Service.Project.WebApi.Test/Com.Moonlay.Service.Project.Test.csproj
+    - dotnet restore Com.Moonlay.Service.Project.Test/Com.Moonlay.Service.Project.Test.csproj
+    - dotnet build Com.Moonlay.Service.Project.Test/Com.Moonlay.Service.Project.Test.csproj
+    - dotnet test Com.Moonlay.Service.Project.Test/Com.Moonlay.Service.Project.Test.csproj
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
