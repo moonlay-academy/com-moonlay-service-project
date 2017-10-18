@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Com.Moonlay.Service.Project.Lib\Com.Moonlay.Service.Project.Lib.csproj" />
+    <ProjectReference Include="..\Com.Moonlay.Service.Project.Lib\Com.Moonlay.Service.Project.Lib.csproj" />
   </ItemGroup>
 
 </Project>

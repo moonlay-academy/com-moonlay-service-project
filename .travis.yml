@@ -8,16 +8,18 @@ services:
     - docker
 env:
     - ASPNETCORE_ENVIRONMENT=Test
+    - DefaultConnection=Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True
 
 before_install:
-    -  bash Dockerfile.test.build.sh
+    - bash Dockerfile.test.build.sh
     #- dotnet publish ./Com.Moonlay.Service.Project.WebApi/Com.Moonlay.Service.Project.WebApi.csproj -o ./bin/publish
     #- docker build -f ./Dockerfile.travis -t moonlay/com-moonlay-service-project-webapi:$TRAVIS_BUILD_NUMBER .
 install: true
 
 before_script:
     - docker-compose -f docker-compose.test.yml up -d
-    - sleep 60
+    - sleep 60    
+    - dotnet ef database update -p Com.Moonlay.Service.Project.Lib -c ProjectDbContext -s Com.Moonlay.Service.Project.WebApi
     #- docker run -p 127.0.0.1:5000:80 --env ASPNETCORE_ENVIRONMENT=Test moonlay/com-moonlay-service-project-webapi:$TRAVIS_BUILD_NUMBER
 script:
     - dotnet restore Com.Moonlay.Service.Project.Test/Com.Moonlay.Service.Project.Test.csproj

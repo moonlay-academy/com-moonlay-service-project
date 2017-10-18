@@ -5,7 +5,7 @@ services:
     image: com-moonlay-service-project-webapi:test
     environment:
       - ASPNETCORE_ENVIRONMENT=Test
-      - DefaultConnection=Server=mssql,1433;Database=com.moonlay.db.project;User=sa;password=Standar123;MultipleActiveResultSets=true 
+      - DefaultConnection=Server=mssql,1433;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True
       - Authority=https://auth.moonlay.com
     build:
       context: .
@@ -19,7 +19,7 @@ services:
     image: microsoft/mssql-server-linux:2017-latest
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=Standar123
+      - MSSQL_SA_PASSWORD=Standar123.
       - MSSQL_PID=Developer
     ports:
       - "1401:1433"

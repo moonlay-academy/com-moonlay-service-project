@@ -20,7 +20,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
         IServiceProvider serviceProvider;
         public ServiceBasicCRUDTest()
         {
-            var connectionString = @"Server=(localdb)\mssqllocaldb;Database=com.moonlay.db.project;Trusted_Connection=True;";
+            var connectionString = @"Server=mssql,1433;Database=com.moonlay.db.auth;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True";
             this.serviceProvider = new ServiceCollection()
                 .AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString))
                 .AddSingleton<TService>()
