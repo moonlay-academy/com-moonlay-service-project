@@ -7,8 +7,7 @@ solution: Com.Moonlay.Service.Project.sln
 services:
     - docker
 env:
-    - ASPNETCORE_ENVIRONMENT=Test
-    - DefaultConnection=Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True
+    - ASPNETCORE_ENVIRONMENT=Test 
 
 before_install:
     - bash Dockerfile.test.build.sh
