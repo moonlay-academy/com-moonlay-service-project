@@ -5,9 +5,9 @@
 /.vs
 /Com.Moonlay.Service.Project.WebApi/bin
 /Com.Moonlay.Service.Project.WebApi/obj
-/Com.Moonlay.Service.Project.WebApi.Test/bin
-/Com.Moonlay.Service.Project.WebApi.Test/obj
 /bin
 /obj
-/Com.Moonlay.Service.Project.Test/bin/Debug
+/Com.Moonlay.Service.Project.Test/bin
 /Com.Moonlay.Service.Project.Test/obj
+/Com.Moonlay.Service.Project.Lib/obj
+/Com.Moonlay.Service.Project.Lib/bin
