@@ -12,7 +12,7 @@ namespace Com.Moonlay.Service.Project.Lib.Models.Validations.Project
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             ProjectService service = validationContext.GetService(typeof(ProjectService)) as ProjectService;
-            var valid = service.DbContext.Projects.Count(r => r.Name == value.ToString()) == 0;
+            var valid = service.DbContext.Set<Lib.Models.Project>().Count(r => r.Name == value.ToString()) == 0;
             if (valid)
                 return ValidationResult.Success;
             else

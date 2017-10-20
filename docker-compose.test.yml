@@ -1,19 +1,6 @@
 version: '3'
  
 services:
-  moonlay-service-project-webapi:
-    image: com-moonlay-service-project-webapi:test
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Test
-      - DefaultConnection=Server=mssql,1433;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True
-      - Authority=https://auth.moonlay.com
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "5001:80"
-    depends_on:
-      - mssql
 
   mssql:
     image: microsoft/mssql-server-linux:2017-latest

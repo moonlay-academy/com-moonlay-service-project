@@ -16,20 +16,24 @@ namespace Com.Moonlay.Service.Project.Test
         {
             var connectionString = @"Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True";
             this.ServiceProvider = new ServiceCollection()
-                .AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString))
-                .AddSingleton<ProjectService>()
-                .AddSingleton<BacklogService>()
+                //.AddEntityFrameworkSqlServer()
+                .AddDbContext<ProjectDbContext>((serviceProvider, options) =>
+                {
+                    options
+                    .UseSqlServer(connectionString);
+                    //.UseInternalServiceProvider(serviceProvider);
+                })
+                .AddSingleton<ProjectService>(provider => new ProjectService(provider))
+                .AddSingleton<BacklogService>(provider => new BacklogService(provider))
                 .AddSingleton<HelperService>()
                 .BuildServiceProvider();
 
             ProjectDbContext dbContext = ServiceProvider.GetService<ProjectDbContext>();
             dbContext.Database.Migrate();
-
-            HelperService h = ServiceProvider.GetService<HelperService>();
         }
 
         public void Dispose()
-        { 
+        {
         }
     }
 

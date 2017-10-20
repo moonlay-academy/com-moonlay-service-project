@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Com.Moonlay.Service.Project.Lib.Services
 {
-    public class BacklogService : StandardEntityService<Models.Backlog>
+    public class BacklogService : StandardEntityService<ProjectDbContext, Models.Backlog>
     {
-        public BacklogService(ProjectDbContext dbContext) : base(dbContext)
+        public BacklogService(IServiceProvider serviceProvider) : base(serviceProvider)
         {
 
         }

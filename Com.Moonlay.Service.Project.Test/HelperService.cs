@@ -28,7 +28,7 @@ namespace Com.Moonlay.Service.Project.Test
         public Task<Lib.Models.Project> GetTestProject()
         {
 
-            var testProject = ProjectService.Set.FirstOrDefault(project => project.Code == "TEST");
+            var testProject = ProjectService.DbSet.FirstOrDefault(project => project.Code == "TEST");
             if (testProject != null)
                 return Task.FromResult(testProject);
             else
@@ -40,7 +40,7 @@ namespace Com.Moonlay.Service.Project.Test
                     Description = "Test Project Description"
                 };
                 var id = ProjectService.Create(testProject);
-                return ProjectService.Set.FindAsync(id);
+                return ProjectService.DbSet.FindAsync(id);
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
+using System.Linq;
 
 namespace Com.Moonlay.Service.Project.Test.Services.ProjectService
 {
@@ -28,6 +29,30 @@ namespace Com.Moonlay.Service.Project.Test.Services.ProjectService
                 Name = string.Format("TEST PROJECT {0}", guid),
                 Description = "TEST PROJECT DESCRIPTION"
             };
+        }
+        [Fact]
+        public void TestCreateValidation()
+        {
+            var service = this.Service;
+            var testData = GetCreateTestModel();
+            testData.Code = string.Empty;
+            //testData.Name = string.Empty;
+            //testData.Description = "".PadLeft(256, '$');
+            try
+            {
+
+                var createdCount = service.Create(testData);
+                throw new Exception();
+            }
+            catch (ServiceValidationExeption ex)
+            {
+                var codeResult = ex.ValidationResults.FirstOrDefault(r => r.MemberNames.Contains("Code"));
+                Assert.NotNull(codeResult);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

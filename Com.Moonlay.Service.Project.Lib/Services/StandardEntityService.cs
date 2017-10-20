@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Com.Moonlay.Service.Project.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 using Com.Moonlay.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Com.Moonlay.Service.Project.Lib.Services
 {
-    public class StandardEntityService<TModel> : BaseService<TModel, int>
-        where TModel : StandardEntity
+    public class StandardEntityService<TDbContext, TModel> : BaseService<TDbContext, TModel, int>
+        where TDbContext : DbContext
+        where TModel : StandardEntity, IValidatableObject
     {
-        public StandardEntityService(ProjectDbContext dbContext) : base(dbContext)
+        public StandardEntityService(IServiceProvider serviceProvider) : base(serviceProvider)
         {
 
         }
@@ -43,6 +45,8 @@ namespace Com.Moonlay.Service.Project.Lib.Services
             var nowUtc = DateTime.UtcNow;
             var agent = string.Empty;
             var actor = string.Empty;
+
+            OnUpdating(model.Id, model);
 
             model._IsDeleted = true;
             model._DeletedBy = actor;

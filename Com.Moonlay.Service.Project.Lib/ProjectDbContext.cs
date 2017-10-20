@@ -1,6 +1,6 @@
 ﻿using Com.Moonlay.EntityFrameworkCore;
 using Com.Moonlay.Service.Project.Lib.Models;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore; 
 using System;
 
 namespace Com.Moonlay.Service.Project.Lib
@@ -9,8 +9,7 @@ namespace Com.Moonlay.Service.Project.Lib
     {
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options)
             : base(options)
-        {
-
+        {            
         }
 
         public DbSet<Models.Project> Projects { get; set; }

@@ -9,6 +9,7 @@ namespace Com.Moonlay.Service.Project.Lib.Services
 {
     public interface IService
     {
+
         IEnumerable<object> Get();
         Task<object> GetAsync(object id);
         object Get(object id);

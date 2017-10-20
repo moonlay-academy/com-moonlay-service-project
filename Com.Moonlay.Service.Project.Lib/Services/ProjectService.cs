@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Com.Moonlay.Service.Project.Lib.Services
 {
-    public class ProjectService : StandardEntityService<Models.Project>
+    public class ProjectService : StandardEntityService<ProjectDbContext, Models.Project>
     {
-        public ProjectService(ProjectDbContext dbContext) : base(dbContext)
+        public ProjectService(IServiceProvider serviceProvider) : base(serviceProvider)
         {
 
         }

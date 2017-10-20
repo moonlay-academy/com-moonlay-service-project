@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -15,18 +16,12 @@ namespace Com.Moonlay.Service.Project.Test.Services
 {
     [Collection("ServiceProviderFixture collection")]
     public abstract class ServiceBasicCRUDTest<TService, TModel> : IDisposable
-        where TService : StandardEntityService<TModel>
-        where TModel : StandardEntity, new()
+        where TService : BaseService
+        where TModel : StandardEntity, IValidatableObject, new()
     {
         IServiceProvider serviceProvider;
         public ServiceBasicCRUDTest(ServiceProviderFixture fixture)
         {
-            //var connectionString = @"Server=tcp:127.0.0.1,1401;Database=com.moonlay.db.project;User=sa;password=Standar123.;MultipleActiveResultSets=true;Persist Security Info=True";
-            //this.serviceProvider = new ServiceCollection()
-            //    .AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString))
-            //    .AddSingleton<TService>()
-            //    .AddSingleton<HelperService>()
-            //    .BuildServiceProvider();
             this.serviceProvider = fixture.ServiceProvider;
         }
         protected TService Service
@@ -68,7 +63,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
             var id = testData.Id;
             Assert.True(createdCount == 1);
 
-            var data = service.Set.FindAsync(id);
+            var data = service.DbContext.Set<TModel>().FindAsync(id);
             Assert.NotNull(data);
         }
         [Fact]
@@ -80,7 +75,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
             var id = testData.Id;
             Assert.True(createdCount == 1);
 
-            var data = service.Set.Find(id);
+            var data = service.DbContext.Set<TModel>().Find(id);
             Assert.NotNull(data);
         }
 
@@ -92,7 +87,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
 
             var createdCount = await service.CreateAsync(testData);
             var id = testData.Id;
-            var data = await service.Set.FindAsync(id);
+            var data = await service.DbContext.Set<TModel>().FindAsync(id);
             Assert.NotNull(data);
             Assert.True(createdCount == 1);
 
@@ -108,7 +103,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
 
             var createdCount = service.Create(testData);
             var id = testData.Id;
-            var data = service.Set.Find(id);
+            var data = service.DbContext.Set<TModel>().Find(id);
             Assert.NotNull(data);
             Assert.True(createdCount == 1);
 
@@ -124,7 +119,7 @@ namespace Com.Moonlay.Service.Project.Test.Services
 
             var affectedCount = await service.CreateAsync(testData);
             var id = testData.Id;
-            var data = await service.Set.FindAsync(id);
+            var data = await service.DbContext.Set<TModel>().FindAsync(id);
 
             Assert.NotNull(data);
             Assert.True(affectedCount == 1);
@@ -132,10 +127,10 @@ namespace Com.Moonlay.Service.Project.Test.Services
             var affectedResult = await service.DeleteAsync(data.Id);
             Assert.True(affectedResult == 1);
 
-            data = await service.Set.FirstOrDefaultAsync(m => m.Id == id);
+            data = await service.DbContext.Set<TModel>().FirstOrDefaultAsync(m => m.Id == id);
             Assert.Null(data);
 
-            data = await service.Set.FindAsync(id);
+            data = await service.DbContext.Set<TModel>().FindAsync(id);
             Assert.NotNull(data);
             Assert.True(data._IsDeleted);
 
